@@ -41,7 +41,7 @@ export const colors = {
   },
 };
 
-const breakpoints = {
+export const breakpoints = {
   xs: 0,
   sm: 480,
   md: 768,

@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { breakpoints } from '../index';
+import breakpoints from '../index';
 
 /**
  * Resolves the media query for the given breakpoint.
