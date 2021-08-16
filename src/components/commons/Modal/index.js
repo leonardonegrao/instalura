@@ -2,21 +2,25 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
 const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: strech;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.9);
 
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 100;
 
   margin: auto;
   overflow: scroll;
+
+  transition: .3s;
 
   ${({ isOpen }) => {
     if (isOpen) {
@@ -48,9 +52,28 @@ export default function Modal({ isOpen, onClose, children }) {
       isOpen={isOpen}
       onClick={(event) => handleClick(event)}
     >
-      {children({
-        'data-model-safe-area': 'true',
-      })}
+      <motion.div
+        variants={{
+          open: {
+            x: 0,
+          },
+          closed: {
+            x: '-100%',
+          },
+        }}
+        animate={isOpen ? 'open' : 'closed'}
+        transition={{
+          duration: 0.5,
+        }}
+        style={{
+          display: 'flex',
+          flex: 1,
+        }}
+      >
+        {children({
+          'data-model-safe-area': 'true',
+        })}
+      </motion.div>
     </ModalWrapper>
   );
 }
