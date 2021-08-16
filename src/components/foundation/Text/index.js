@@ -39,16 +39,18 @@ export const TextStyleVariantsMap = {
 }
 
 const TextBase = styled.span`
+  font-family: ${({ theme }) => theme.fontFamily};
   ${({ variant }) => TextStyleVariantsMap[variant]}
   color: ${({ theme, color }) => get(theme, `colors.${color}.color`)};
   ${propToStyle('textAlign')}
 `
 
-export default function Text({ tag, variant, children }) {
+export default function Text({ tag, variant, children, ...props }) {
   return (
     <TextBase
       as={tag}
       variant={variant}
+      {...props}
     >
       {children}
     </TextBase>

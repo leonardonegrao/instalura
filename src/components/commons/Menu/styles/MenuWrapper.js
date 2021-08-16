@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../../../theme/utils/breakpointsMedia';
-import { TextStyleVariants } from '../../../foundation/Text';
+import { TextStyleVariantsMap } from '../../../foundation/Text';
 
 export const MenuWrapper = styled.nav`
   font-family: 'Rubik', sans-serif;
@@ -11,7 +11,7 @@ export const MenuWrapper = styled.nav`
   margin-top: 18px;
   padding-left: 28px;
   padding-right: 28px;
-  /* ${breakpointsMedia({
+  ${breakpointsMedia({
     md: css`
       justify-content: flex-start;
       margin-top: 32px;
@@ -27,7 +27,7 @@ export const MenuWrapper = styled.nav`
     xl: css`
       max-width: 1222px;
     `,
-  })} */
+  })}
 `;
 
 MenuWrapper.LeftSide = styled.div`
@@ -80,14 +80,14 @@ MenuWrapper.CentralSide = styled.div`
     text-decoration: none;
     color: #88989E;
     transition: 200ms ease-in-out;
-    /* ${breakpointsMedia({
+    ${breakpointsMedia({
     xs: css`
-        ${TextStyleVariants.smallestException}
+        ${TextStyleVariantsMap.smallestException}
     `,
     md: css`
-      ${TextStyleVariants.paragraph1}
+      ${TextStyleVariantsMap.paragraph1}
     `,
-  })} */
+  })}
     &:hover,
     &:focus {
       font-weight: 500;

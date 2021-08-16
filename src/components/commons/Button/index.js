@@ -32,8 +32,10 @@ export const Button = styled.button`
     `,
   })}
 
-${propToStyle('margin')}
-${propToStyle('display')}
+  font-family: ${({ theme }) => theme.fontFamily};
+
+  ${propToStyle('margin')}
+  ${propToStyle('display')}
 
   ${props => props.ghost ? ButtonGhost : ButtonDefault}
 
