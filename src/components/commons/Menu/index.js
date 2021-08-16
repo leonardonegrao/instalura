@@ -1,6 +1,7 @@
 import React from 'react';
+
 import { Logo } from '../../../theme/Logo';
-import { Button } from '../Button'
+import { Button } from '../Button';
 import { MenuWrapper } from './styles/MenuWrapper';
 import Text from '../../foundation/Text';
 
