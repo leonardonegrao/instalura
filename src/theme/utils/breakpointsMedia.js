@@ -13,7 +13,6 @@ export function breakpointsMedia(cssByBreakpoint) {
     .filter((breakpointName) => Boolean(cssByBreakpoint[breakpointName]))
     .map((breakpointName) => css`
       @media only screen and (min-width: ${breakpoints[breakpointName]}px) {
-        ${() => console.log('passou em um breakpoint krl')}
         ${cssByBreakpoint[breakpointName]}
       }
   `);
