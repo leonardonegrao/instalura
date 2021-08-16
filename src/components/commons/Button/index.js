@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
-import get from 'lodash/get'
-import { TextStyleVariantsMap } from "../../foundation/Text";
+import styled, { css } from 'styled-components';
+import get from 'lodash/get';
+import { TextStyleVariantsMap } from '../../foundation/Text';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 
@@ -37,7 +37,7 @@ export const Button = styled.button`
   ${propToStyle('margin')}
   ${propToStyle('display')}
 
-  ${props => props.ghost ? ButtonGhost : ButtonDefault}
+  ${(props) => (props.ghost ? ButtonGhost : ButtonDefault)}
 
   &:hover,
   &:focus  {

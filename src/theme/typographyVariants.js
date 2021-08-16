@@ -34,4 +34,4 @@ export const typographyVariants = {
     fontWeight: '400',
     lineHeight: 1, // 100%
   },
-}
+};

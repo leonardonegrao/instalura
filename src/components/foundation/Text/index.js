@@ -1,7 +1,7 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import get from 'lodash/get'
-import PropTypes from 'prop-types'
+import React from 'react';
+import styled, { css } from 'styled-components';
+import get from 'lodash/get';
+import PropTypes from 'prop-types';
 import { propToStyle } from '../../../theme/utils/propToStyle';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 
@@ -27,25 +27,27 @@ export const TextStyleVariantsMap = {
       line-height: ${theme.typographyVariants.titleXS.lineHeight};
     `}
     ${breakpointsMedia({
-      md: css`
+    md: css`
         ${({ theme }) => css`
           font-size: ${theme.typographyVariants.title.fontSize};
           font-weight: ${theme.typographyVariants.title.fontWeight};
           line-height: ${theme.typographyVariants.title.lineHeight};
         `}
       `,
-    })}
+  })}
   `,
-}
+};
 
 const TextBase = styled.span`
   font-family: ${({ theme }) => theme.fontFamily};
   ${({ variant }) => TextStyleVariantsMap[variant]}
   color: ${({ theme, color }) => get(theme, `colors.${color}.color`)};
   ${propToStyle('textAlign')}
-`
+`;
 
-export default function Text({ tag, variant, children, ...props }) {
+export default function Text({
+  tag, variant, children, ...props
+}) {
   return (
     <TextBase
       as={tag}
@@ -54,7 +56,7 @@ export default function Text({ tag, variant, children, ...props }) {
     >
       {children}
     </TextBase>
-  )
+  );
 }
 
 Text.defaultProps = {
@@ -66,4 +68,4 @@ Text.propTypes = {
   children: PropTypes.node.isRequired,
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span']),
   variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
-}
+};
