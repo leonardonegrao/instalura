@@ -7,6 +7,7 @@ import { Box } from '../src/components/foundation/layout/Box';
 import Text from '../src/components/foundation/Text';
 import { Button } from '../src/components/commons/Button';
 import Modal from '../src/components/commons/Modal';
+import FormCadastro from '../src/components/patterns/FormCadastro';
 
 export default function Home() {
   const [isModalOpen, setModalState] = React.useState(false);
@@ -22,19 +23,9 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setModalState(false)}
-      >
+      <Modal isOpen={isModalOpen} onClose={() => setModalState(false)}>
         {(propsModal) => (
-          <Box
-            backgroundColor="white"
-            {...propsModal}
-          >
-            <div>
-              Nosso conteúdo pro modal
-            </div>
-          </Box>
+          <FormCadastro propsModal={propsModal} />
         )}
       </Modal>
 
@@ -77,8 +68,9 @@ export default function Home() {
                   md: 'left',
                 }}
               >
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industrys standard dummy text
+                ever since the 1500s.
               </Text>
 
               <Button
@@ -95,9 +87,7 @@ export default function Home() {
             </div>
           </Grid.Col>
 
-          <Grid.Col
-            value={{ xs: 12, md: 6 }}
-          >
+          <Grid.Col value={{ xs: 12, md: 6 }}>
             <img
               src="https://bootcamp-alura-01-git-modulo01.omariosouto.vercel.app/images/phones.png"
               alt="Imagens com a aplicação aberta em celulares, ilustrativa."
