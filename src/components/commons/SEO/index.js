@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export function SEO({ headTitle }) {
   const pageTitleDefault = 'Instalura - Projeto do Alura Bootcamp';
   const hasHeadTitle = Boolean(headTitle);
-  const title = hasHeadTitle ? (`${headTitle} } ${pageTitleDefault}`) : (pageTitleDefault);
+  const title = hasHeadTitle ? (`${headTitle} | ${pageTitleDefault}`) : (pageTitleDefault);
 
   return (
     <Head>
