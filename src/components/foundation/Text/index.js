@@ -82,7 +82,7 @@ Text.defaultProps = {
 
 Text.propTypes = {
   children: PropTypes.node,
-  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span', 'input']),
+  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span', 'input', 'subTitle']),
   variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
   href: PropTypes.string,
 };
