@@ -27,6 +27,7 @@ export default function TextField({
   value,
   type = 'text',
   required = false,
+  ...props
 }) {
   return (
     <InputWrapper>
@@ -37,6 +38,7 @@ export default function TextField({
         onChange={onChange}
         value={value}
         required={required}
+        {...props}
       />
     </InputWrapper>
   );
