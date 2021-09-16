@@ -1,3 +1,5 @@
+import { destroyCookie, setCookie } from 'nookies';
+
 async function HttpClient(url, { headers, body, ...options }) {
   return fetch(url, {
     headers: { ...headers, 'Content-Type': 'application/json' },
@@ -8,7 +10,7 @@ async function HttpClient(url, { headers, body, ...options }) {
       return response.json();
     }
 
-    throw new Error('Falha em pegar os dados do servidor');
+    throw new Error('Falha em pegar os dados do servidor.');
   });
 }
 
@@ -17,6 +19,18 @@ export const loginService = {
     return HttpClient('https://instalura-api-git-master-omariosouto.vercel.app/api/login', {
       method: 'POST',
       body: { username, password },
+    }).then((convertedResponse) => {
+      const { token } = convertedResponse.data;
+      const DAY_IN_SECONDS = 86400;
+      setCookie(null, 'APP_TOKEN', token, {
+        path: '/',
+        maxAge: DAY_IN_SECONDS * 7,
+      });
+
+      return { token };
     });
+  },
+  logout() {
+    destroyCookie(null, 'APP_TOKEN');
   },
 };
