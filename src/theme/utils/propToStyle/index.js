@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { breakpointsMedia } from './breakpointsMedia';
+import { breakpointsMedia } from '../breakpointsMedia';
 
 /**
  * Creates the CSS for each required property.
