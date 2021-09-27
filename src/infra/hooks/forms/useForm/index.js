@@ -28,6 +28,7 @@ export function useForm({ initialValues, onSubmit, validateSchema }) {
   return {
     values,
     isFormDisabled,
+    setIsFormDisabled,
     errors,
     touchedFields,
     handleSubmit(event) {
