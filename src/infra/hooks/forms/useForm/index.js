@@ -1,5 +1,14 @@
 import React from 'react';
 
+function formatErrors(yupErrors = []) {
+  return yupErrors.reduce((errorObjectAcc, currentError) => {
+    const fieldName = currentError.path;
+    const errorMessage = currentError.message;
+
+    return { ...errorObjectAcc, [fieldName]: errorMessage };
+  }, {});
+}
+
 export function useForm({ initialValues, onSubmit, validateSchema }) {
   const [values, setValues] = React.useState(initialValues);
   const [touchedFields, setTouchedFields] = React.useState({});
@@ -13,12 +22,7 @@ export function useForm({ initialValues, onSubmit, validateSchema }) {
       setErrors({});
       setIsFormDisabled(false);
     } catch (err) {
-      const formattedErrors = err.inner.reduce((errorObjectAcc, currentError) => {
-        const fieldName = currentError.path;
-        const errorMessage = currentError.message;
-
-        return { ...errorObjectAcc, [fieldName]: errorMessage };
-      }, {});
+      const formattedErrors = formatErrors(err.inner);
 
       setErrors(formattedErrors);
       setIsFormDisabled(true);
@@ -26,7 +30,9 @@ export function useForm({ initialValues, onSubmit, validateSchema }) {
   }
 
   React.useEffect(() => {
-    validateValues(values);
+    validateValues(values)
+      // eslint-disable-next-line no-console
+      .catch((err) => console.error(err));
   }, [values]);
 
   return {
