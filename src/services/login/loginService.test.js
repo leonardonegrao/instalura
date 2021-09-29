@@ -61,9 +61,9 @@ describe('loginService', () => {
       const destroyCookie = jest.fn();
 
       test('remove their token', async () => {
-        await loginService.logout(destroyCookie);
+        await loginService.logout(null, destroyCookie);
 
-        expect(destroyCookie).toHaveBeenCalledWith(null, 'APP_TOKEN');
+        expect(destroyCookie).toHaveBeenCalledWith(null, null, 'APP_TOKEN', { path: '/' });
       });
     });
   });
