@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 import { Box } from '../../foundation/layout/Box';
 import Menu from '../../commons/Menu';
 import Footer from '../../commons/Footer';
@@ -7,16 +8,16 @@ import Modal from '../../commons/Modal';
 import FormCadastro from '../../patterns/FormCadastro';
 import { SEO } from '../../commons/SEO';
 
-export const WebsitePageContext = React.createContext({
-  toggleModalCadastro: () => { },
-  isModalOpen: false,
-});
+import { WebsitePageContext } from './context';
+
+export { WebsitePageContext } from './context';
 
 export default function WebsitePageWrapper({
   children,
   seoProps,
   pageBoxProps,
   menuProps,
+  messages,
 }) {
   const [isModalOpen, setModalState] = React.useState(false);
 
@@ -25,6 +26,7 @@ export default function WebsitePageWrapper({
       toggleModalCadastro: () => {
         setModalState(!isModalOpen);
       },
+      getCMSContent: (cmsKey) => get(messages, cmsKey),
       isModalOpen,
     }}
     >
@@ -55,6 +57,7 @@ WebsitePageWrapper.defaultProps = {
   menuProps: {
     display: true,
   },
+  messages: {},
 };
 
 WebsitePageWrapper.propTypes = {
@@ -70,4 +73,6 @@ WebsitePageWrapper.propTypes = {
     backgroundRepeat: PropTypes.string,
     backgroundPosition: PropTypes.string,
   }),
+  // eslint-disable-next-line react/forbid-prop-types
+  messages: PropTypes.object,
 };
