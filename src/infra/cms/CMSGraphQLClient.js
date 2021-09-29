@@ -2,9 +2,9 @@ import { GraphQLClient, gql as GraphQLTag } from 'graphql-request';
 
 export const gql = GraphQLTag;
 
-export function CMSGraphQLClient() {
+export function CMSGraphQLClient({ preview } = { preview: false }) {
   const TOKEN = process.env.DATOCMS_TOKEN;
-  const DatoCMSURL = 'https://graphql.datocms.com/';
+  const DatoCMSURL = `https://graphql.datocms.com/${preview ? 'preview' : ''}`;
   const client = new GraphQLClient(DatoCMSURL, {
     headers: {
       Authorization: `Bearer ${TOKEN}`,
